@@ -31,7 +31,7 @@ func (c *Client) FetchAccountCodes(ctx context.Context) (map[string]string, erro
 	}
 
 	if intermediate.Status != "ok" {
-		return nil, errDataFetchFailed
+		return nil, ErrDataFetchFailed
 	}
 
 	return func() map[string]string {

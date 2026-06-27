@@ -3,7 +3,6 @@ package fincloud
 import (
 	"context"
 	"crypto/tls"
-	"errors"
 	"io"
 	"net/http"
 	"strings"
@@ -14,14 +13,6 @@ import (
 const (
 	defaultBaseURL = "https://172.20.57.7/fincloud-taspen-web"
 	userAgent      = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:142.0) Gecko/20100101 Firefox/142.0"
-)
-
-var (
-	errMissingCredentials = errors.New("missing Fincloud credentials")
-	errInvalidCredentials = errors.New("invalid Fincloud credentials")
-	errNotLoggedIn        = errors.New("not logged in to Fincloud")
-	errDataFetchFailed    = errors.New("failed to fetch data from Fincloud")
-	errUnableToReauth     = errors.New("unable to re-authenticate with Fincloud")
 )
 
 // Credentials bundles the username/password required to login.
@@ -62,7 +53,7 @@ func WithHTTPClient(httpClient *http.Client) ClientOption {
 
 func NewClient(creds Credentials, opts ...ClientOption) (*Client, error) {
 	if creds.Username == "" || creds.Password == "" {
-		return nil, errMissingCredentials
+		return nil, ErrMissingCredentials
 	}
 
 	httpClient := &http.Client{
@@ -136,7 +127,7 @@ func (c *Client) doWithReauth(ctx context.Context, buildReq func() (*http.Reques
 	err = c.login(ctx)
 	c.reauthMu.Unlock()
 	if err != nil {
-		return nil, errUnableToReauth
+		return nil, ErrUnableToReauth
 	}
 
 	req, err = buildReq()
@@ -151,7 +142,7 @@ func (c *Client) doWithReauth(ctx context.Context, buildReq func() (*http.Reques
 
 	if resp.StatusCode == http.StatusUnauthorized {
 		resp.Body.Close()
-		return nil, errUnableToReauth
+		return nil, ErrUnableToReauth
 	}
 
 	return resp, nil

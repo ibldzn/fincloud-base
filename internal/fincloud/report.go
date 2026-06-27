@@ -55,7 +55,7 @@ func (c *Client) DownloadReport(ctx context.Context, name string, params ...any)
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return "", errDataFetchFailed
+		return "", ErrDataFetchFailed
 	}
 
 	data, err := io.ReadAll(resp.Body)
@@ -87,7 +87,7 @@ func (c *Client) DownloadReportFromMaintenance(ctx context.Context, file, path s
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return "", errDataFetchFailed
+		return "", ErrDataFetchFailed
 	}
 
 	data, err := io.ReadAll(resp.Body)
@@ -140,7 +140,7 @@ func (c *Client) listMaintenanceDir(ctx context.Context, file, dir string) ([]st
 	}
 
 	if intermediate.Status != "ok" {
-		return nil, errDataFetchFailed
+		return nil, ErrDataFetchFailed
 	}
 
 	var files []string
@@ -150,7 +150,7 @@ func (c *Client) listMaintenanceDir(ctx context.Context, file, dir string) ([]st
 		case "Folder":
 			childFiles, err := c.listMaintenanceDir(ctx, item.File, intermediate.Data.Result.PathFolder)
 			if err != nil {
-				return nil, err
+				return nil, ErrDataFetchFailed
 			}
 			files = append(files, childFiles...)
 		case "File":

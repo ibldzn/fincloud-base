@@ -3,6 +3,7 @@ package fincloud
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"net/url"
 	"strings"
@@ -20,7 +21,7 @@ func (c *Client) Login(ctx context.Context) error {
 
 func (c *Client) login(ctx context.Context) error {
 	if strings.TrimSpace(c.creds.Username) == "" || strings.TrimSpace(c.creds.Password) == "" {
-		return errMissingCredentials
+		return ErrMissingCredentials
 	}
 
 	form := url.Values{}
@@ -42,7 +43,7 @@ func (c *Client) login(ctx context.Context) error {
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return errInvalidCredentials
+		return ErrInvalidCredentials
 	}
 
 	var payload struct {
@@ -62,9 +63,9 @@ func (c *Client) login(ctx context.Context) error {
 
 	if payload.Status != "ok" {
 		if payload.Error != nil {
-			return errInvalidCredentials
+			return fmt.Errorf("%w: %s", ErrInvalidCredentials, payload.Error.System)
 		}
-		return errInvalidCredentials
+		return ErrInvalidCredentials
 	}
 
 	c.setSessionID(payload.Data.Result.SessionID)
@@ -74,7 +75,7 @@ func (c *Client) login(ctx context.Context) error {
 
 func (c *Client) Logout(ctx context.Context) error {
 	if !c.IsLoggedIn() {
-		return errNotLoggedIn
+		return ErrNotLoggedIn
 	}
 
 	req, err := c.NewRequest(ctx, http.MethodPost, "/admin/access/logout", nil)
@@ -113,7 +114,7 @@ func (c *Client) GetAuthLabels(ctx context.Context) (*AuthorizationModel, error)
 	}
 
 	if intermediate.Status != "ok" {
-		return nil, errDataFetchFailed
+		return nil, ErrDataFetchFailed
 	}
 
 	return &intermediate.Data.Result, nil

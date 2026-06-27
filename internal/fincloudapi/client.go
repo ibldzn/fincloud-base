@@ -18,8 +18,8 @@ const (
 )
 
 var (
-	errMissingSecretKey = errors.New("missing secret key")
-	errAPIError         = errors.New("API error")
+	ErrMissingSecretKey = errors.New("missing secret key")
+	ErrAPIError         = errors.New("API error")
 )
 
 type Client struct {
@@ -63,7 +63,7 @@ func NewClient(options ...ClientOption) (*Client, error) {
 	}
 
 	if c.secretKey == "" {
-		return nil, errMissingSecretKey
+		return nil, ErrMissingSecretKey
 	}
 
 	if c.baseURL == "" {
@@ -169,5 +169,5 @@ func addNonEmptyQuery(q url.Values, key, value string) {
 }
 
 func newAPIError[T any](resp genericResponse[T]) error {
-	return fmt.Errorf("%w: %s - %s", errAPIError, resp.ResponseCode, resp.Description)
+	return fmt.Errorf("%w: %s - %s", ErrAPIError, resp.ResponseCode, resp.Description)
 }
