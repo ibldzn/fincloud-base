@@ -46,7 +46,7 @@ func (c *Client) login(ctx context.Context) error {
 		return ErrInvalidCredentials
 	}
 
-	var payload struct {
+	var intermediate struct {
 		Data struct {
 			Result struct {
 				SessionID string `json:"sessionid"`
@@ -57,18 +57,18 @@ func (c *Client) login(ctx context.Context) error {
 			System string `json:"system"`
 		} `json:"error,omitempty"`
 	}
-	if err := json.NewDecoder(resp.Body).Decode(&payload); err != nil {
+	if err := json.NewDecoder(resp.Body).Decode(&intermediate); err != nil {
 		return err
 	}
 
-	if payload.Status != "ok" {
-		if payload.Error != nil {
-			return fmt.Errorf("%w: %s", ErrInvalidCredentials, payload.Error.System)
+	if intermediate.Status != "ok" {
+		if intermediate.Error != nil {
+			return fmt.Errorf("%w: %s", ErrInvalidCredentials, intermediate.Error.System)
 		}
 		return ErrInvalidCredentials
 	}
 
-	c.setSessionID(payload.Data.Result.SessionID)
+	c.setSessionID(intermediate.Data.Result.SessionID)
 
 	return nil
 }
