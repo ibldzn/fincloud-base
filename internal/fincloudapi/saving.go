@@ -28,7 +28,7 @@ func (c *Client) InquirySavingBalance(
 
 func (c *Client) InquirySavingTransactionHistory(
 	ctx context.Context,
-	payload SavingStatementInquiryDTO,
+	payload SavingStatementInquiryRequest,
 ) (*InquiryAccountStatementsResponse, error) {
 	return doAPI[InquiryAccountStatementsResponse](
 		c,

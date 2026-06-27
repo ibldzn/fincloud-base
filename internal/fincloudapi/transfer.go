@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func (c *Client) TransferGlToGl(ctx context.Context, payload GlToGlDTO) (*GlToGlResponse, error) {
+func (c *Client) TransferGlToGl(ctx context.Context, payload GlToGlRequest) (*GlToGlResponse, error) {
 	return doAPI[GlToGlResponse](
 		c,
 		ctx,
@@ -16,7 +16,7 @@ func (c *Client) TransferGlToGl(ctx context.Context, payload GlToGlDTO) (*GlToGl
 	)
 }
 
-func (c *Client) TransferGlToSaving(ctx context.Context, payload GlToSavingDTO) (*GlToSavingResponse, error) {
+func (c *Client) TransferGlToSaving(ctx context.Context, payload GlToSavingRequest) (*GlToSavingResponse, error) {
 	return doAPI[GlToSavingResponse](
 		c,
 		ctx,

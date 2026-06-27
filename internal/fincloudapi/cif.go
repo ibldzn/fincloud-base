@@ -7,7 +7,7 @@ import (
 
 func (c *Client) InquiryCIF(
 	ctx context.Context,
-	payload CIFInquiryDTO,
+	payload CIFInquiryRequest,
 ) (*CIFInquiryResponse, error) {
 	return doAPI[CIFInquiryResponse](
 		c,

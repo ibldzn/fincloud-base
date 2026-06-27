@@ -86,7 +86,7 @@ func main() {
 			continue
 		}
 
-		payload := fincloudapi.LoanTerminationDTO{
+		payload := fincloudapi.LoanTerminationRequest{
 			TrxReference:   "abcd",
 			AccountNumber:  row["rekening"],
 			AltNumber:      "",

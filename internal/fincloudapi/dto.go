@@ -1,12 +1,12 @@
 package fincloudapi
 
-type CIFInquiryDTO struct {
+type CIFInquiryRequest struct {
 	AccountNumber    string `json:"accountNumber"`
 	NationalIdNumber string `json:"nationalIdNo"`
 	CIFNumber        string `json:"cifNo"`
 }
 
-type SavingStatementInquiryDTO struct {
+type SavingStatementInquiryRequest struct {
 	AccountNumber string `json:"accountNo"`
 	StartDate     string `json:"startDate"`
 	EndDate       string `json:"endDate"`
@@ -14,7 +14,7 @@ type SavingStatementInquiryDTO struct {
 	Index         uint   `json:"index"`
 }
 
-type GlToGlDTO struct {
+type GlToGlRequest struct {
 	ReferenceNumber string `json:"referenceNumber"`
 	TrxType         string `json:"trxType"`
 	TermType        string `json:"termType"`
@@ -40,7 +40,7 @@ type GlToGlDTO struct {
 	Type            string `json:"type"`
 }
 
-type GlToSavingDTO struct {
+type GlToSavingRequest struct {
 	Amount          string `json:"amount"`
 	CustomerID      string `json:"customerId"`
 	DateTime        string `json:"dateTime"`
@@ -60,7 +60,7 @@ type GlToSavingDTO struct {
 	Type            string `json:"type"`
 }
 
-type LoanTerminationDTO struct {
+type LoanTerminationRequest struct {
 	TrxReference   string `json:"trxReference"`
 	AccountNumber  string `json:"accountNumber"`
 	AltNumber      string `json:"altNumber"`
@@ -73,11 +73,11 @@ type LoanTerminationDTO struct {
 	BranchCode     string `json:"branchCode"`
 }
 
-type LoanInquiryDTO struct {
+type LoanInquiryRequest struct {
 	AccountNumber string `json:"accountNumber"`
 }
 
-type LoanDisbursementDTO struct {
+type LoanDisbursementRequest struct {
 	IdProduct               string `json:"idProduct"`
 	Description             string `json:"description"`
 	HashCode                string `json:"hashCode"`

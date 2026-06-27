@@ -7,7 +7,7 @@ import (
 
 func (c *Client) InquiryLoan(
 	ctx context.Context,
-	payload LoanInquiryDTO,
+	payload LoanInquiryRequest,
 ) (*LoanInquiryResponse, error) {
 	return doAPI[LoanInquiryResponse](
 		c,
@@ -21,7 +21,7 @@ func (c *Client) InquiryLoan(
 
 func (c *Client) DisburseLoan(
 	ctx context.Context,
-	payload LoanDisbursementDTO,
+	payload LoanDisbursementRequest,
 ) (*LoanDisbursementResponse, error) {
 	return doAPI[LoanDisbursementResponse](
 		c,
@@ -35,7 +35,7 @@ func (c *Client) DisburseLoan(
 
 func (c *Client) TerminateLoan(
 	ctx context.Context,
-	payload LoanTerminationDTO,
+	payload LoanTerminationRequest,
 ) (*LoanTerminationResponse, error) {
 	return doAPI[LoanTerminationResponse](
 		c,
