@@ -142,15 +142,15 @@ func doAPI[T any](
 	if err != nil {
 		return nil, err
 	}
+
+	bodyBytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
 	defer resp.Body.Close()
 
-	// print raw body for debugging
-	// rawBody, _ := io.ReadAll(resp.Body)
-	// fmt.Println("Raw response body:", string(rawBody))
-	// resp.Body = io.NopCloser(bytes.NewBuffer(rawBody))
-
 	var apiResp genericResponse[T]
-	if err := json.NewDecoder(resp.Body).Decode(&apiResp); err != nil {
+	if err := json.Unmarshal(bodyBytes, &apiResp); err != nil {
 		return nil, err
 	}
 
