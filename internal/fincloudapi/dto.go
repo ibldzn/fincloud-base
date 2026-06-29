@@ -75,6 +75,7 @@ type LoanTerminationRequest struct {
 
 type LoanInquiryRequest struct {
 	AccountNumber string `json:"accountNumber"`
+	AltNumber     string `json:"altNumber"`
 }
 
 type LoanDisbursementRequest struct {
