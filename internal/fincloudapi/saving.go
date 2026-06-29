@@ -26,6 +26,26 @@ func (c *Client) InquirySavingBalance(
 	)
 }
 
+func (c *Client) InquirySavingBalance2(
+	ctx context.Context,
+	accountNumber string,
+) (*SavingBalanceInquiry2Response, error) {
+	return doAPI[SavingBalanceInquiry2Response](
+		c,
+		ctx,
+		http.MethodGet,
+		"/account/balance",
+		nil,
+		func(req *http.Request) error {
+			q := req.URL.Query()
+			addNonEmptyQuery(q, "account", accountNumber)
+			req.URL.RawQuery = q.Encode()
+
+			return nil
+		},
+	)
+}
+
 func (c *Client) InquirySavingTransactionHistory(
 	ctx context.Context,
 	payload SavingStatementInquiryRequest,

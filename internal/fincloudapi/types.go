@@ -28,21 +28,6 @@ type InquiryAccountStatementsResponse = genericListResponse[
 	},
 ]
 
-// type InquiryAccountStatementsResponse struct {
-// 	Index string `json:"index"`
-// 	Next  string `json:"next"`
-// }
-
-// type AccountStatement struct {
-// 	Date            string `json:"date"`
-// 	Time            string `json:"time"`
-// 	ReferenceNumber string `json:"referenceNumber"`
-// 	Amount          string `json:"amount"`
-// 	Sign            string `json:"sign"`
-// 	Description     string `json:"description"`
-// 	EndBalance      string `json:"endBalance"`
-// }
-
 type GlToGlResponse struct {
 	DebitAccount         string `json:"debitAccount"`
 	CreditAccStatus      string `json:"creditAccStatus"`
@@ -145,6 +130,28 @@ type CIFInquiryResponse struct {
 	JobCompanyName   string `json:"jobCompanyName"`
 }
 
+type PortfolioInquiryResponse struct {
+	Savings []PortfolioKind `json:"savings"`
+	Deposit []PortfolioKind `json:"deposit"`
+}
+
+type PortfolioKind struct {
+	Name          string   `json:"name"`
+	Account       string   `json:"account"`
+	ProductCode   string   `json:"productCode"`
+	ProductName   string   `json:"productName"`
+	Status        string   `json:"status"`
+	Type          string   `json:"type"`
+	Currency      string   `json:"currency"`
+	MidRate       float64  `json:"midRate"`
+	LedgerBalance float64  `json:"ledgerBalance"`
+	Plafond       float64  `json:"plafond"`
+	MinBalance    float64  `json:"minBalance"`
+	IssueDate     *string  `json:"issueDate,omitempty"`
+	MaturityDate  *string  `json:"maturityDate,omitempty"`
+	IntRate       *float64 `json:"intRate,omitempty"`
+}
+
 type SavingBalanceInquiryResponse struct {
 	CustomerName       string `json:"customerName"`
 	DocumentStatus     string `json:"documentStatus"`
@@ -163,6 +170,18 @@ type SavingBalanceInquiryResponse struct {
 	CustResidentStatus string `json:"custResidentStatus"`
 	ProductID          string `json:"productId"`
 	Currency           string `json:"currency"`
+}
+
+type SavingBalanceInquiry2Response struct {
+	Account          string `json:"account"`
+	Plafond          string `json:"plafond"`
+	ClearBalance     string `json:"clearBalance"`
+	AvailableBalance string `json:"availableBalance"`
+	InactiveMarker   string `json:"inactiveMarker"`
+	CustomerName     string `json:"customerName"`
+	ProductCode      string `json:"productCode"`
+	ProductName      string `json:"productName"`
+	Currency         string `json:"currency"`
 }
 
 type LoanInquiryResponse struct {

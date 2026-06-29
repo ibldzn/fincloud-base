@@ -26,3 +26,23 @@ func (c *Client) InquiryCIF(
 		},
 	)
 }
+
+func (c *Client) InquiryPortfolio(
+	ctx context.Context,
+	cif string,
+) (*PortfolioInquiryResponse, error) {
+	return doAPI[PortfolioInquiryResponse](
+		c,
+		ctx,
+		http.MethodGet,
+		"/account/potfolio/cif",
+		nil,
+		func(req *http.Request) error {
+			q := req.URL.Query()
+			addNonEmptyQuery(q, "cifNo", cif)
+			req.URL.RawQuery = q.Encode()
+
+			return nil
+		},
+	)
+}
