@@ -178,7 +178,7 @@ func (c *Client) GetLoanAccountDetails(ctx context.Context, accountNumber string
 		PrincipalWriteOff:       nullableString("nilaihapusbuku_saldopinjaman"),
 		Status:                  loanDetails.Status,
 		BranchCode:              loanDetails.BranchCode,
-		AltNumber:               result["noalt"].(string),
+		AltNumber:               nullableString("noalt"),
 		ChargeOffAmount:         nullableString("total_ht"),
 		ClosedDate:              nullableString("tgltutup"),
 		AccrueInterest:          loanDetails.AccrueInterest,
