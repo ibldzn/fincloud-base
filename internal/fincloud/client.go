@@ -8,6 +8,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/ibldzn/fincloud-base/internal/fincloudapi"
 )
 
 const (
@@ -30,6 +32,7 @@ type Client struct {
 	sessionMu  sync.RWMutex
 	sessionID  string
 	baseURL    string
+	api        *fincloudapi.Client
 }
 
 type ClientOption func(*Client)
@@ -47,6 +50,14 @@ func WithHTTPClient(httpClient *http.Client) ClientOption {
 	return func(c *Client) {
 		if httpClient != nil {
 			c.httpClient = httpClient
+		}
+	}
+}
+
+func WithAPIClient(api *fincloudapi.Client) ClientOption {
+	return func(c *Client) {
+		if api != nil {
+			c.api = api
 		}
 	}
 }
