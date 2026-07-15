@@ -78,6 +78,7 @@ func (c *Client) DownloadReportFromMaintenance(ctx context.Context, file, path s
 		q := req.URL.Query()
 		q.Set("file", file)
 		q.Set("path", path)
+		q.Set("sessionId", c.sessionIDValue())
 		req.URL.RawQuery = q.Encode()
 		return req, nil
 	})
