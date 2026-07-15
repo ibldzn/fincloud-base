@@ -130,6 +130,13 @@ type CIFInquiryResponse struct {
 	JobCompanyName   string `json:"jobCompanyName"`
 }
 
+type CreateCIFResponse struct {
+	Name            string `json:"name"`
+	City            string `json:"city"`
+	CifNumber       string `json:"cifNumber"`
+	AlternateNumber string `json:"alternateNumber"`
+}
+
 type PortfolioInquiryResponse struct {
 	Savings []PortfolioKind `json:"savings"`
 	Deposit []PortfolioKind `json:"deposit"`

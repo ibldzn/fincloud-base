@@ -6,6 +6,43 @@ type CIFInquiryRequest struct {
 	CIFNumber        string `json:"cifNo"`
 }
 
+type CreateCIFRequest struct {
+	Name             string `json:"name"`
+	MobilePhoneNo    string `json:"mobilePhoneNo"`
+	NationalIDNo     string `json:"nationalIdNo"`
+	BirthDate        string `json:"birthDate"`
+	Gender           int64  `json:"gender"`
+	Email            string `json:"email"`
+	TaxIDNo          string `json:"taxIdNo"`
+	Nationality      string `json:"nationality"`
+	BirthPlace       string `json:"birthPlace"`
+	MotherMaidenName string `json:"motherMaidenName"`
+	Religion         string `json:"religion"`
+	Province         string `json:"province"`
+	City             string `json:"city"`
+	PostalCode       string `json:"postalCode"`
+	SubDistrict      string `json:"subDistrict"`
+	Village          string `json:"village"`
+	Address          string `json:"address"`
+	MaritalStatus    string `json:"maritalStatus"`
+	LastEducation    string `json:"lastEducation"`
+	Job              string `json:"job"`
+	IncomeSource     string `json:"incomeSource"`
+	IncomeRange      string `json:"incomeRange"`
+	JobCompanyName   string `json:"jobCompanyName"`
+	JobType          string `json:"jobType"`
+	JobAddress       string `json:"jobAddress"`
+	JobPostalCode    string `json:"jobPostalCode"`
+	JobPhone         string `json:"jobPhone"`
+	User             string `json:"user"`
+	BranchCode       string `json:"branchCode"`
+	CityDati2        string `json:"cityDati2"`
+	ReferenceName    string `json:"referenceName"`
+	Address2         string `json:"address2"`
+	Neighbourhood    string `json:"neighbourhood"`
+	Hamlet           string `json:"hamlet"`
+}
+
 type SavingStatementInquiryRequest struct {
 	AccountNumber string `json:"accountNo"`
 	StartDate     string `json:"startDate"`

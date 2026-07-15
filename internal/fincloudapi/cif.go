@@ -46,3 +46,17 @@ func (c *Client) InquiryPortfolio(
 		},
 	)
 }
+
+func (c *Client) CreateCIF(
+	ctx context.Context,
+	payload CreateCIFRequest,
+) (*CreateCIFResponse, error) {
+	return doAPI[CreateCIFResponse](
+		c,
+		ctx,
+		http.MethodPost,
+		"/account/create/cif",
+		payload,
+		nil,
+	)
+}
