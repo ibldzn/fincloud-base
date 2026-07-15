@@ -110,6 +110,15 @@ type LoanTerminationRequest struct {
 	BranchCode     string `json:"branchCode"`
 }
 
+type LoanRepaymentRequest struct {
+	TrxReference  string `json:"trxReference"`
+	AccountNumber string `json:"accountNumber"`
+	AltNumber     string `json:"altNumber"`
+	PaymentAmount int64  `json:"paymentAmount"`
+	Description   string `json:"description"`
+	BranchCode    string `json:"branchCode"`
+}
+
 type LoanInquiryRequest struct {
 	AccountNumber string `json:"accountNumber"`
 	AltNumber     string `json:"altNumber"`

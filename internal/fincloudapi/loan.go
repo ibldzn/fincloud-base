@@ -46,3 +46,17 @@ func (c *Client) TerminateLoan(
 		nil,
 	)
 }
+
+func (c *Client) RepayLoan(
+	ctx context.Context,
+	payload LoanRepaymentRequest,
+) (*LoanRepaymentResponse, error) {
+	return doAPI[LoanRepaymentResponse](
+		c,
+		ctx,
+		http.MethodPost,
+		"/loan/repayment/",
+		payload,
+		nil,
+	)
+}

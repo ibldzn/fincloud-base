@@ -243,3 +243,18 @@ type LoanDisbursementResponse struct {
 	Installment        string `json:"installment"`
 	Cif                string `json:"cif"`
 }
+
+type LoanRepaymentResponse struct {
+	Description     string `json:"description"`
+	JournalID       string `json:"journalId"`
+	AlternateNumber string `json:"alternateNumber"`
+	CifNoAlt        string `json:"cifNoAlt"`
+	CifNo           string `json:"cifNo"`
+	CustomerName    string `json:"customerName"`
+	Amount          string `json:"amount"`
+	Status          string `json:"status"`
+	BranchCode      string `json:"branchCode"`
+	TransactionID   string `json:"transactionId"`
+	TrxReference    string `json:"trxReference"`
+	AccountNumber   string `json:"accountNumber"`
+}
