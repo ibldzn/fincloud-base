@@ -245,3 +245,18 @@ type InquiryETOrRepaymentRequest struct {
 	AltNumber     string `json:"altNumber"`
 	TrxReference  string `json:"trxReference"`
 }
+
+type TransferOverbookingRequest struct {
+	TrxReference  string `json:"trxReference"`
+	TrxType       string `json:"trxType"`
+	TermType      string `json:"termType"`
+	TermID        string `json:"termId"`
+	ReceiptNumber string `json:"receiptNumber"`
+	BranchCode    string `json:"branchCode"`
+	SrcAccount    string `json:"srcAccount"`
+	DestAccount   string `json:"destAccount"`
+	Amount        string `json:"amount"`
+	DebitFee      int64  `json:"debitFee"`
+	CreditFee     int64  `json:"creditFee"`
+	Description   string `json:"description"`
+}

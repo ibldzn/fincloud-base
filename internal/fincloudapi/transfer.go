@@ -26,3 +26,18 @@ func (c *Client) TransferGlToSaving(ctx context.Context, payload GlToSavingReque
 		nil,
 	)
 }
+
+func (c *Client) TransferOverbooking(ctx context.Context, payload TransferOverbookingRequest) (*baseResponse, error) {
+	payload.TrxType = "TL01"
+	payload.TermType = "6014"
+	payload.TermID = "FINCLOUD"
+
+	return doAPI[baseResponse](
+		c,
+		ctx,
+		http.MethodPost,
+		"/trx/transfer",
+		payload,
+		nil,
+	)
+}

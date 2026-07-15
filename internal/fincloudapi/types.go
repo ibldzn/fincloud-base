@@ -1,19 +1,22 @@
 package fincloudapi
 
-type genericResponse[T any] struct {
+type baseResponse struct {
 	ResponseCode string `json:"responseCode"`
 	Description  string `json:"description"`
-	Data         T      `json:"data"`
+}
+
+type genericResponse[T any] struct {
+	baseResponse
+	Data T `json:"data"`
 }
 
 type genericListResponse[T any, U any] struct {
-	ResponseCode string `json:"responseCode"`
-	Description  string `json:"description"`
-	Data         T      `json:"data"`
-	List         []U    `json:"list"`
+	baseResponse
+	Data *T  `json:"data,omitempty"`
+	List []U `json:"list"`
 }
 
-type InquiryAccountStatementsResponse = genericListResponse[
+type InquiryAccountStatementsResponse genericListResponse[
 	struct {
 		Index string `json:"index"`
 		Next  string `json:"next"`
