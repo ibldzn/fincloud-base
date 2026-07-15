@@ -69,3 +69,27 @@ func (c *Client) InquirySavingTransactionHistory(
 		},
 	)
 }
+
+func (c *Client) InquirySavingBalanceByAccOrAltNumber(
+	ctx context.Context,
+	accountNumber string,
+	isAltNumber bool,
+) (*SavingBalanceInquiryResponse, error) {
+	key := "accountNumber"
+	if isAltNumber {
+		key = "altNumber"
+	}
+
+	body := map[string]string{
+		key: accountNumber,
+	}
+
+	return doAPI[SavingBalanceInquiryResponse](
+		c,
+		ctx,
+		http.MethodPost,
+		"/saving/account/balanceByAccNoOrAltNo",
+		body,
+		nil,
+	)
+}
