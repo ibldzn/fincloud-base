@@ -198,8 +198,6 @@ type PortfolioLoan struct {
 	PrincipalArrears string `json:"principalArrears"`
 }
 
-type PortfolioLoanInquiryResponse genericListResponse[PortfolioLoan]
-
 type SavingBalanceInquiryResponse struct {
 	CustomerName       string `json:"customerName"`
 	DocumentStatus     string `json:"documentStatus"`
