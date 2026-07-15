@@ -10,13 +10,18 @@ type genericResponse[T any] struct {
 	Data T `json:"data"`
 }
 
-type genericListResponse[T any, U any] struct {
+type genericListResponse[T any] struct {
+	baseResponse
+	List []T `json:"list"`
+}
+
+type genericListResponseX[T any, U any] struct {
 	baseResponse
 	Data *T  `json:"data,omitempty"`
 	List []U `json:"list"`
 }
 
-type InquiryAccountStatementsResponse genericListResponse[
+type InquiryAccountStatementsResponse genericListResponseX[
 	struct {
 		Index string `json:"index"`
 		Next  string `json:"next"`
@@ -161,6 +166,39 @@ type PortfolioKind struct {
 	MaturityDate  *string  `json:"maturityDate,omitempty"`
 	IntRate       *float64 `json:"intRate,omitempty"`
 }
+
+type PortfolioLoan struct {
+	LoanNo           string `json:"loanNo"`
+	Term             string `json:"term"`
+	InterestArrears  string `json:"interestArrears"`
+	Status           string `json:"status"`
+	NextDueDate      string `json:"nextDueDate"`
+	TermPeriod       string `json:"termPeriod"`
+	CustomerName     string `json:"customerName"`
+	ProductCode      string `json:"productCode"`
+	Outstanding      string `json:"outstanding"`
+	Dpd              string `json:"dpd"`
+	AccountNumber    string `json:"accountNumber"`
+	StartPeriod      string `json:"startPeriod"`
+	Collectability   string `json:"collectability"`
+	MaturityDate     string `json:"maturityDate"`
+	CompanyID        string `json:"companyID"`
+	CifNoAlt         string `json:"cifNoAlt"`
+	Installment      string `json:"installment"`
+	CifNo            string `json:"cifNo"`
+	AccrueInterest   string `json:"accrueInterest"`
+	PenaltyArrears   string `json:"penaltyArrears"`
+	BranchCode       string `json:"branchCode"`
+	EndPeriod        string `json:"endPeriod"`
+	CurrencyCode     string `json:"currencyCode"`
+	CreditLimit      string `json:"creditLimit"`
+	InterestRate     string `json:"interestRate"`
+	ProductName      string `json:"productName"`
+	LoanAmount       string `json:"loanAmount"`
+	PrincipalArrears string `json:"principalArrears"`
+}
+
+type PortfolioLoanInquiryResponse genericListResponse[PortfolioLoan]
 
 type SavingBalanceInquiryResponse struct {
 	CustomerName       string `json:"customerName"`

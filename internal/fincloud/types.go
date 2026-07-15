@@ -9,6 +9,7 @@ var (
 	ErrDataFetchFailed    = errors.New("failed to fetch data from Fincloud")
 	ErrUnableToReauth     = errors.New("unable to re-authenticate with Fincloud")
 	ErrDataNotFound       = errors.New("data not found")
+	ErrMissingAPIClient   = errors.New("missing Fincloud API client")
 )
 
 type AuthorizationModel struct {

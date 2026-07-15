@@ -88,3 +88,22 @@ func (c *Client) InquiryRepayment(
 		nil,
 	)
 }
+
+func (c *Client) InquiryPortfolioLoanByCIFNo(
+	ctx context.Context,
+	cifNo string,
+) ([]PortfolioLoan, error) {
+	return doAPIList[PortfolioLoan](
+		c,
+		ctx,
+		http.MethodPost,
+		"/accounts/portfolioLoanByCIForNationalID",
+		nil,
+		func(req *http.Request) error {
+			q := req.URL.Query()
+			addNonEmptyQuery(q, "cifNo", cifNo)
+			req.URL.RawQuery = q.Encode()
+			return nil
+		},
+	)
+}

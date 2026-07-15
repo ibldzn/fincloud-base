@@ -127,6 +127,46 @@ func doAPI[T any](
 	body any,
 	mutateReq func(*http.Request) error,
 ) (*T, error) {
+	apiResp, err := doAPIInternal[genericResponse[T]](c, ctx, method, path, body, mutateReq)
+	if err != nil || apiResp == nil {
+		return nil, err
+	}
+
+	if apiResp.ResponseCode != "00" {
+		return nil, newAPIError(apiResp.baseResponse)
+	}
+
+	return &apiResp.Data, nil
+}
+
+func doAPIList[T any](
+	c *Client,
+	ctx context.Context,
+	method string,
+	path string,
+	body any,
+	mutateReq func(*http.Request) error,
+) ([]T, error) {
+	apiResp, err := doAPIInternal[genericListResponse[T]](c, ctx, method, path, body, mutateReq)
+	if err != nil || apiResp == nil {
+		return nil, err
+	}
+
+	if apiResp.ResponseCode != "00" {
+		return nil, newAPIError(apiResp.baseResponse)
+	}
+
+	return apiResp.List, nil
+}
+
+func doAPIInternal[T any](
+	c *Client,
+	ctx context.Context,
+	method string,
+	path string,
+	body any,
+	mutateReq func(*http.Request) error,
+) (*T, error) {
 	req, err := c.newRequest(ctx, method, path, body)
 	if err != nil {
 		return nil, err
@@ -149,16 +189,12 @@ func doAPI[T any](
 	}
 	defer resp.Body.Close()
 
-	var apiResp genericResponse[T]
+	var apiResp T
 	if err := json.Unmarshal(bodyBytes, &apiResp); err != nil {
 		return nil, err
 	}
 
-	if apiResp.ResponseCode != "00" {
-		return nil, newAPIError(apiResp)
-	}
-
-	return &apiResp.Data, nil
+	return &apiResp, nil
 }
 
 func addNonEmptyQuery(q url.Values, key, value string) {
@@ -168,6 +204,6 @@ func addNonEmptyQuery(q url.Values, key, value string) {
 	}
 }
 
-func newAPIError[T any](resp genericResponse[T]) error {
+func newAPIError(resp baseResponse) error {
 	return fmt.Errorf("%w: %s - %s", ErrAPIError, resp.ResponseCode, resp.Description)
 }
