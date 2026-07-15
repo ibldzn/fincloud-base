@@ -239,3 +239,9 @@ type LoanDisbursementRequest struct {
 	CreditCategoryId        string `json:"creditCategoryId"`
 	SaForLoanRepayment      string `json:"saForLoanRepayment"`
 }
+
+type InquiryETOrRepaymentRequest struct {
+	AccountNumber string `json:"accountNumber"`
+	AltNumber     string `json:"altNumber"`
+	TrxReference  string `json:"trxReference"`
+}

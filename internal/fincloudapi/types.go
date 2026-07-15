@@ -258,3 +258,38 @@ type LoanRepaymentResponse struct {
 	TrxReference    string `json:"trxReference"`
 	AccountNumber   string `json:"accountNumber"`
 }
+
+type InquiryLoanRepaymentResponse struct {
+	CifNoAlt        string `json:"cifNoAlt"`
+	PrincipalPaid   string `json:"principalPaid"`
+	Status          string `json:"status"`
+	BranchCode      string `json:"branchCode"`
+	TransactionID   string `json:"transactionId"`
+	AccountNumber   string `json:"accountNumber"`
+	AlternateNumber string `json:"alternateNumber"`
+	CifNo           string `json:"cifNo"`
+	CustomerName    string `json:"customerName"`
+	Description     string `json:"description"`
+	JournalID       string `json:"journalId"`
+	TrxReference    string `json:"trxReference"`
+}
+
+type InquiryEarlyTerminationResponse struct {
+	PenaltyWaive        string `json:"penaltyWaive"`
+	Status              string `json:"status"`
+	AccountNumber       string `json:"accountNumber"`
+	CifNo               string `json:"cifNo"`
+	CifNoAlt            string `json:"cifNoAlt"`
+	InterestPaid        string `json:"interestPaid"`
+	RepaymentAccBalance string `json:"repaymentAccBalance"`
+	InterestWaive       string `json:"interestWaive"`
+	JournalID           string `json:"journalId"`
+	AlternateNumber     string `json:"alternateNumber"`
+	CustomerName        string `json:"customerName"`
+	Description         string `json:"description"`
+	PenaltyPaid         string `json:"penaltyPaid"`
+	TransactionID       string `json:"transactionId"`
+	TrxReference        string `json:"trxReference"`
+	PrincipalPaid       string `json:"principalPaid"`
+	BranchCode          string `json:"branchCode"`
+}

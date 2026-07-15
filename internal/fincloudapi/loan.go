@@ -60,3 +60,31 @@ func (c *Client) RepayLoan(
 		nil,
 	)
 }
+
+func (c *Client) InquiryEarlyTermination(
+	ctx context.Context,
+	payload InquiryETOrRepaymentRequest,
+) (*InquiryEarlyTerminationResponse, error) {
+	return doAPI[InquiryEarlyTerminationResponse](
+		c,
+		ctx,
+		http.MethodPost,
+		"/loan/earlytermination/status",
+		payload,
+		nil,
+	)
+}
+
+func (c *Client) InquiryRepayment(
+	ctx context.Context,
+	payload InquiryETOrRepaymentRequest,
+) (*InquiryLoanRepaymentResponse, error) {
+	return doAPI[InquiryLoanRepaymentResponse](
+		c,
+		ctx,
+		http.MethodPost,
+		"/loan/repayment/status",
+		payload,
+		nil,
+	)
+}
