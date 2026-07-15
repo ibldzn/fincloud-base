@@ -8,6 +8,7 @@ var (
 	ErrNotLoggedIn        = errors.New("not logged in to Fincloud")
 	ErrDataFetchFailed    = errors.New("failed to fetch data from Fincloud")
 	ErrUnableToReauth     = errors.New("unable to re-authenticate with Fincloud")
+	ErrDataNotFound       = errors.New("data not found")
 )
 
 type AuthorizationModel struct {
