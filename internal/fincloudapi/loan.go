@@ -107,3 +107,16 @@ func (c *Client) InquiryPortfolioLoanByCIFNo(
 		},
 	)
 }
+
+func (c *Client) InquiryLoanProducts(
+	ctx context.Context,
+) ([]LoanProduct, error) {
+	return doAPIList[LoanProduct](
+		c,
+		ctx,
+		http.MethodPost,
+		"/loan/product",
+		nil,
+		nil,
+	)
+}

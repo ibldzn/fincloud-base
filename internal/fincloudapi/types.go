@@ -347,3 +347,26 @@ type SavingDetail struct {
 	Plafond        string `json:"plafond"`
 	Account        string `json:"account"`
 }
+
+type LoanProduct struct {
+	RepaymentBeforeDue           string `json:"repaymentBeforeDue"`
+	ArrearsPenalty               string `json:"arrearsPenalty"`
+	Description                  string `json:"description"`
+	Status                       string `json:"status"`
+	InstallmentType              string `json:"installmentType"`
+	ProductID                    string `json:"productID"`
+	ProductName                  string `json:"productName"`
+	InterestRateType             string `json:"interestRateType"`
+	AnnualDays                   string `json:"annualDays"`
+	MaxCreditlimit               string `json:"maxCreditlimit"`
+	InterestRateChange           string `json:"interestRateChange"`
+	WaiveRepaymentPenalty        string `json:"waiveRepaymentPenalty"`
+	RepaymentType                string `json:"repaymentType"`
+	TermPeriod                   string `json:"termPeriod"`
+	MinCreditLimit               string `json:"minCreditLimit"`
+	EarlyTerminationPenalty      string `json:"earlyTerminationPenalty"`
+	InterestRate                 string `json:"interestRate"`
+	ArrearsPenaltyGracePeriod    string `json:"arrearsPenaltyGracePeriod"`
+	WaiveEarlyTerminationPenalty string `json:"waiveEarlyTerminationPenalty"`
+	LoanType                     string `json:"loanType"`
+}
