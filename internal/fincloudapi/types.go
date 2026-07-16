@@ -167,37 +167,6 @@ type PortfolioKind struct {
 	IntRate       *float64 `json:"intRate,omitempty"`
 }
 
-type PortfolioLoan struct {
-	LoanNo           string `json:"loanNo"`
-	Term             string `json:"term"`
-	InterestArrears  string `json:"interestArrears"`
-	Status           string `json:"status"`
-	NextDueDate      string `json:"nextDueDate"`
-	TermPeriod       string `json:"termPeriod"`
-	CustomerName     string `json:"customerName"`
-	ProductCode      string `json:"productCode"`
-	Outstanding      string `json:"outstanding"`
-	Dpd              string `json:"dpd"`
-	AccountNumber    string `json:"accountNumber"`
-	StartPeriod      string `json:"startPeriod"`
-	Collectability   string `json:"collectability"`
-	MaturityDate     string `json:"maturityDate"`
-	CompanyID        string `json:"companyID"`
-	CifNoAlt         string `json:"cifNoAlt"`
-	Installment      string `json:"installment"`
-	CifNo            string `json:"cifNo"`
-	AccrueInterest   string `json:"accrueInterest"`
-	PenaltyArrears   string `json:"penaltyArrears"`
-	BranchCode       string `json:"branchCode"`
-	EndPeriod        string `json:"endPeriod"`
-	CurrencyCode     string `json:"currencyCode"`
-	CreditLimit      string `json:"creditLimit"`
-	InterestRate     string `json:"interestRate"`
-	ProductName      string `json:"productName"`
-	LoanAmount       string `json:"loanAmount"`
-	PrincipalArrears string `json:"principalArrears"`
-}
-
 type SavingBalanceInquiryResponse struct {
 	CustomerName       string `json:"customerName"`
 	DocumentStatus     string `json:"documentStatus"`
@@ -331,4 +300,50 @@ type InquiryEarlyTerminationResponse struct {
 	TrxReference        string `json:"trxReference"`
 	PrincipalPaid       string `json:"principalPaid"`
 	BranchCode          string `json:"branchCode"`
+}
+
+type PortfolioLoan struct {
+	LoanNo           string `json:"loanNo"`
+	Term             string `json:"term"`
+	InterestArrears  string `json:"interestArrears"`
+	Status           string `json:"status"`
+	NextDueDate      string `json:"nextDueDate"`
+	TermPeriod       string `json:"termPeriod"`
+	CustomerName     string `json:"customerName"`
+	ProductCode      string `json:"productCode"`
+	Outstanding      string `json:"outstanding"`
+	Dpd              string `json:"dpd"`
+	AccountNumber    string `json:"accountNumber"`
+	StartPeriod      string `json:"startPeriod"`
+	Collectability   string `json:"collectability"`
+	MaturityDate     string `json:"maturityDate"`
+	CompanyID        string `json:"companyID"`
+	CifNoAlt         string `json:"cifNoAlt"`
+	Installment      string `json:"installment"`
+	CifNo            string `json:"cifNo"`
+	AccrueInterest   string `json:"accrueInterest"`
+	PenaltyArrears   string `json:"penaltyArrears"`
+	BranchCode       string `json:"branchCode"`
+	EndPeriod        string `json:"endPeriod"`
+	CurrencyCode     string `json:"currencyCode"`
+	CreditLimit      string `json:"creditLimit"`
+	InterestRate     string `json:"interestRate"`
+	ProductName      string `json:"productName"`
+	LoanAmount       string `json:"loanAmount"`
+	PrincipalArrears string `json:"principalArrears"`
+}
+
+type SavingDetail struct {
+	Name           string `json:"name"`
+	ClearBalance   string `json:"clearBalance"`
+	AccType        string `json:"accType"`
+	BranchCode     string `json:"branchCode"`
+	BranchName     string `json:"branchName"`
+	Currency       string `json:"currency"`
+	AccStatus      string `json:"accStatus"`
+	ProductCode    string `json:"productCode"`
+	ProductName    string `json:"productName"`
+	WorkingBalance string `json:"workingBalance"`
+	Plafond        string `json:"plafond"`
+	Account        string `json:"account"`
 }

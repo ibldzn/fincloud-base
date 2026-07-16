@@ -93,3 +93,22 @@ func (c *Client) InquirySavingBalanceByAccOrAltNumber(
 		nil,
 	)
 }
+
+func (c *Client) InquirySavingListByCIF(
+	ctx context.Context,
+	cifNo string,
+) ([]SavingDetail, error) {
+	return doAPIList[SavingDetail](
+		c,
+		ctx,
+		http.MethodGet,
+		"/account/saving/list",
+		nil,
+		func(req *http.Request) error {
+			q := req.URL.Query()
+			addNonEmptyQuery(q, "cifNo", cifNo)
+			req.URL.RawQuery = q.Encode()
+			return nil
+		},
+	)
+}
