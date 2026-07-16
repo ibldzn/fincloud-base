@@ -30,6 +30,26 @@ type Client struct {
 
 type ClientOption func(*Client)
 
+type APIError struct {
+	ResponseCode string
+	Description  string
+}
+
+func (e *APIError) Error() string {
+	return fmt.Sprintf("%s: %s - %s", ErrAPIError, e.ResponseCode, e.Description)
+}
+
+func (e *APIError) Unwrap() error {
+	return ErrAPIError
+}
+
+func newAPIError(resp baseResponse) error {
+	return &APIError{
+		ResponseCode: resp.ResponseCode,
+		Description:  resp.Description,
+	}
+}
+
 func WithBaseURL(baseURL string) ClientOption {
 	return func(c *Client) {
 		baseURL = strings.TrimRight(strings.TrimSpace(baseURL), "/")
@@ -202,8 +222,4 @@ func addNonEmptyQuery(q url.Values, key, value string) {
 	if value != "" {
 		q.Set(key, value)
 	}
-}
-
-func newAPIError(resp baseResponse) error {
-	return fmt.Errorf("%w: %s - %s", ErrAPIError, resp.ResponseCode, resp.Description)
 }
