@@ -112,3 +112,58 @@ func (c *Client) InquirySavingListByCIF(
 		},
 	)
 }
+
+func (c *Client) InquirySavingProducts(
+	ctx context.Context,
+) ([]SavingProduct, error) {
+	return doAPIList[SavingProduct](
+		c,
+		ctx,
+		http.MethodGet,
+		"/saving/product/list",
+		nil,
+		nil,
+	)
+}
+
+func (c *Client) CreateSaving(
+	ctx context.Context,
+	payload CreateSavingRequest,
+) (*CreateSavingResponse, error) {
+	return doAPI[CreateSavingResponse](
+		c,
+		ctx,
+		http.MethodPost,
+		"/account/create/saving",
+		payload,
+		nil,
+	)
+}
+
+func (c *Client) BlockSaving(
+	ctx context.Context,
+	payload BlockSavingRequest,
+) (*BlockSavingResponse, error) {
+	return doAPI[BlockSavingResponse](
+		c,
+		ctx,
+		http.MethodPost,
+		"/account/blocking",
+		payload,
+		nil,
+	)
+}
+
+func (c *Client) UnblockSaving(
+	ctx context.Context,
+	payload UnblockSavingRequest,
+) (*UnblockSavingResponse, error) {
+	return doAPI[UnblockSavingResponse](
+		c,
+		ctx,
+		http.MethodPost,
+		"/account/unBlocking",
+		payload,
+		nil,
+	)
+}

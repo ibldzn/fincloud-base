@@ -260,3 +260,31 @@ type TransferOverbookingRequest struct {
 	CreditFee     int64  `json:"creditFee"`
 	Description   string `json:"description"`
 }
+
+type CreateSavingRequest struct {
+	CifNumber      string `json:"cifNumber"`
+	ProductCode    string `json:"productCode"`
+	Alias          string `json:"alias"`
+	OpeningPurpose string `json:"openingPurpose"`
+	AltNumber      string `json:"altNumber"`
+	BranchCode     string `json:"branchCode"`
+	FacilityValue  string `json:"facilityValue"`
+}
+
+type BlockSavingRequest struct {
+	AccountNumber   string `json:"accountNumber"`
+	AlternateNumber string `json:"alternateNumber"`
+	BlockAmount     int64  `json:"blockAmount"`
+	EndDate         string `json:"endDate"`
+	BlockReason     string `json:"blockReason"`
+	Description     string `json:"description"`
+	BranchCode      string `json:"branchCode"`
+}
+
+type UnblockSavingRequest struct {
+	AccountNumber   string `json:"accountNumber"`
+	AlternateNumber string `json:"alternateNumber"`
+	UnblockReason   string `json:"unblockReason"`
+	Description     string `json:"description"`
+	BranchCode      string `json:"branchCode"`
+}

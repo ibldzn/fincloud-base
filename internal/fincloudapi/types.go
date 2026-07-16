@@ -348,6 +348,27 @@ type SavingDetail struct {
 	Account        string `json:"account"`
 }
 
+type SavingProduct struct {
+	MinDebit                string `json:"minDebit"`
+	DailyDebitLimit         string `json:"dailyDebitLimit"`
+	MonthlyDebitLimit       string `json:"monthlyDebitLimit"`
+	MinBalance              string `json:"minBalance"`
+	DailyCreditFreqLimit    string `json:"dailyCreditFreqLimit"`
+	MonthlyDebitFreqLimit   string `json:"monthlyDebitFreqLimit"`
+	MonthlyCreditFreqLimit  string `json:"monthlyCreditFreqLimit"`
+	DailyCreditLimit        string `json:"dailyCreditLimit"`
+	ManualAccountClosingFee string `json:"manualAccountClosingFee"`
+	MaxBalance              string `json:"maxBalance"`
+	DailyDebitFreqLimit     string `json:"dailyDebitFreqLimit"`
+	MonthlyCreditLimit      string `json:"monthlyCreditLimit"`
+	AdminFeeNominal         string `json:"adminFeeNominal"`
+	Description             string `json:"description"`
+	ProductName             string `json:"productName"`
+	MaxDebit                string `json:"maxDebit"`
+	AccountDepositMin       string `json:"accountDepositMin"`
+	ProductCode             string `json:"productCode"`
+}
+
 type LoanProduct struct {
 	RepaymentBeforeDue           string `json:"repaymentBeforeDue"`
 	ArrearsPenalty               string `json:"arrearsPenalty"`
@@ -419,4 +440,39 @@ type TimeDepositDetail2 struct {
 	IssueDate     string `json:"issueDate"`
 	IntRate       string `json:"intRate"`
 	Aro           string `json:"aro"`
+}
+
+type CreateSavingResponse struct {
+	AccountAlias   string `json:"accountAlias"`
+	ProductCode    string `json:"productCode"`
+	ProductName    string `json:"productName"`
+	OpeningPurpose string `json:"openingPurpose"`
+	CifNumber      string `json:"cifNumber"`
+	CustomerName   string `json:"customerName"`
+	Name           string `json:"name"`
+	AccountNumber  string `json:"accountNumber"`
+}
+
+type BlockSavingResponse struct {
+	TransactionID    string `json:"transactionId"`
+	BlockAmount      string `json:"blockAmount"`
+	TotalBlockAmount string `json:"totalBlockAmount"`
+	BranchCode       string `json:"branchCode"`
+	BlockReason      string `json:"blockReason"`
+	Description      string `json:"description"`
+	AccountNumber    string `json:"accountNumber"`
+	AlternateNumber  string `json:"alternateNumber"`
+	CustomerName     string `json:"customerName"`
+	EndDate          string `json:"endDate"`
+}
+
+type UnblockSavingResponse struct {
+	AlternateNumber string `json:"alternateNumber"`
+	CustomerName    string `json:"customerName"`
+	UnblockReason   string `json:"unblockReason"`
+	UnblockAmount   string `json:"unblockAmount"`
+	BranchCode      string `json:"branchCode"`
+	Description     string `json:"description"`
+	TransactionID   string `json:"transactionId"`
+	AccountNumber   string `json:"accountNumber"`
 }
