@@ -370,3 +370,15 @@ type LoanProduct struct {
 	WaiveEarlyTerminationPenalty string `json:"waiveEarlyTerminationPenalty"`
 	LoanType                     string `json:"loanType"`
 }
+
+type TimeDepositProduct struct {
+	Name                   string `json:"name"`
+	DepositType            string `json:"depositType"`
+	CompoundIntRate        string `json:"compoundIntRate"`
+	MaxLimitNominalDeposit string `json:"maxLimitNominalDeposit"`
+	TypePayIntRate         string `json:"typePayIntRate"`
+	AutomaticDisburse      string `json:"automaticDisburse"`
+	ID                     string `json:"id"`
+	PercentIntRate         string `json:"percentIntRate"`
+	MinLimitNominalDeposit string `json:"minLimitNominalDeposit"`
+}
