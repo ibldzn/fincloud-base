@@ -382,3 +382,41 @@ type TimeDepositProduct struct {
 	PercentIntRate         string `json:"percentIntRate"`
 	MinLimitNominalDeposit string `json:"minLimitNominalDeposit"`
 }
+
+type TimeDepositDetail struct {
+	BranchCode     string `json:"branchCode"`
+	BranchName     string `json:"branchName"`
+	MaturityDate   string `json:"maturityDate"`
+	ProductName    string `json:"productName"`
+	WorkingBalance string `json:"workingBalance"`
+	AccType        string `json:"accType"`
+	Currency       string `json:"currency"`
+	ProductCode    string `json:"productCode"`
+	AccStatus      string `json:"accStatus"`
+	InterestRate   string `json:"interestRate"`
+	StartDate      string `json:"startDate"`
+	Account        string `json:"account"`
+	Name           string `json:"name"`
+	Amount         string `json:"amount"`
+	Plafond        string `json:"plafond"`
+}
+
+type TimeDepositDetail2 struct {
+	CustomerName  string `json:"customerName"`
+	CurrencyCode  string `json:"currencyCode"`
+	LedgerBalance string `json:"ledgerBalance"`
+	SaDestination string `json:"saDestination"`
+	ID            string `json:"id"`
+	ProductName   string `json:"productName"`
+	AccountType   string `json:"accountType"`
+	BranchCode    string `json:"branchCode"`
+	CifNo         string `json:"cifNo"`
+	ProductCode   string `json:"productCode"`
+	Status        string `json:"status"`
+	Plafond       string `json:"plafond"`
+	MinBalance    string `json:"minBalance"`
+	MaturityDate  string `json:"maturityDate"`
+	IssueDate     string `json:"issueDate"`
+	IntRate       string `json:"intRate"`
+	Aro           string `json:"aro"`
+}
